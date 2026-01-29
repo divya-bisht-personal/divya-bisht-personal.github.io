@@ -223,6 +223,55 @@ ul {
     color: var(--color-deep-teal);
 }
 
+/* Email Link */
+.email-link {
+    position: relative;
+    cursor: pointer;
+    font-family: var(--font-family);
+    background: transparent;
+}
+
+.email-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-deep-teal);
+    color: var(--color-white);
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+}
+
+.email-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--color-deep-teal);
+}
+
+.email-link:hover .email-tooltip,
+.email-link:focus .email-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.email-tooltip.copied {
+    background: var(--color-fresh-green);
+}
+
+.email-tooltip.copied::after {
+    border-top-color: var(--color-fresh-green);
+}
+
 /* ============================================
    Section Styles
    ============================================ */
@@ -252,11 +301,13 @@ section {
 .about {
     background: var(--color-white);
     padding-top: var(--spacing-xl);
+    overflow-x: hidden;
 }
 
 .about-content {
     display: grid;
     gap: var(--spacing-xl);
+    overflow-wrap: break-word;
 }
 
 .about-professional h3,
@@ -569,6 +620,24 @@ section {
     color: var(--color-deep-teal);
 }
 
+.footer .email-tooltip {
+    background: var(--color-white);
+    color: var(--color-deep-teal);
+}
+
+.footer .email-tooltip::after {
+    border-top-color: var(--color-white);
+}
+
+.footer .email-tooltip.copied {
+    background: var(--color-fresh-green);
+    color: var(--color-white);
+}
+
+.footer .email-tooltip.copied::after {
+    border-top-color: var(--color-fresh-green);
+}
+
 .footer-copyright {
     font-size: 0.85rem;
     color: var(--color-soft-mint);
@@ -631,6 +700,14 @@ section {
 
     .project-card.featured {
         grid-column: 1;
+    }
+
+    .about-personal {
+        padding: var(--spacing-sm);
+    }
+
+    .about-professional ul {
+        padding-left: var(--spacing-sm);
     }
 }
 

@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initScrollAnimations();
     initNavHighlight();
+    initEmailCopy();
 });
 
 /**
@@ -58,6 +59,30 @@ function initScrollAnimations() {
 
     fadeElements.forEach(element => {
         observer.observe(element);
+    });
+}
+
+/**
+ * Email Copy to Clipboard
+ */
+function initEmailCopy() {
+    const emailButtons = document.querySelectorAll('.email-link');
+
+    emailButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const email = button.getAttribute('data-email');
+            const tooltip = button.querySelector('.email-tooltip');
+
+            navigator.clipboard.writeText(email).then(() => {
+                tooltip.textContent = 'Copied!';
+                tooltip.classList.add('copied');
+
+                setTimeout(() => {
+                    tooltip.textContent = email;
+                    tooltip.classList.remove('copied');
+                }, 1500);
+            });
+        });
     });
 }
 
