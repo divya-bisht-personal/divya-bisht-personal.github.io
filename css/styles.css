@@ -308,6 +308,13 @@ section {
     display: grid;
     gap: var(--spacing-xl);
     overflow-wrap: break-word;
+    min-width: 0;
+}
+
+.about-professional,
+.about-personal {
+    min-width: 0;
+    max-width: 100%;
 }
 
 .about-professional h3,
@@ -318,13 +325,15 @@ section {
 
 .about-professional ul {
     margin-top: var(--spacing-sm);
-    padding-left: var(--spacing-md);
+    padding-left: var(--spacing-sm);
 }
 
 .about-professional li {
     position: relative;
     padding-left: var(--spacing-md);
     margin-bottom: var(--spacing-xs);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .about-professional li::before {
@@ -347,6 +356,7 @@ section {
 .about-photos {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: var(--spacing-md);
 }
@@ -357,6 +367,7 @@ section {
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--color-soft-mint);
+    flex-shrink: 0;
 }
 
 /* ============================================
@@ -707,6 +718,10 @@ section {
     }
 
     .about-professional ul {
+        padding-left: 0;
+    }
+
+    .about-professional li {
         padding-left: var(--spacing-sm);
     }
 }
@@ -728,5 +743,18 @@ section {
     .footer-links {
         flex-direction: column;
         align-items: center;
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .about-personal {
+        padding: var(--spacing-xs);
+    }
+
+    .about-photo {
+        width: 90px;
+        height: 90px;
     }
 }
